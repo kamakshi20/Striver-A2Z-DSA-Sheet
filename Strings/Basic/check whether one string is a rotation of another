@@ -1,0 +1,25 @@
+class Solution {
+    public boolean rotateString(String s, String goal) {
+        
+        int l1 = s.length();
+        int l2 = goal.length();
+
+        if(l1 != l2)    return false;
+
+        char ch = s.charAt(0);
+
+        for(int i=0; i<l1; i++){
+            if(goal.charAt(i) == ch){
+                String left_s = s.substring(0, l1 - i);
+                String right_s = s.substring(l1 - i);
+
+                String left_goal = goal.substring(0, i);
+                String right_goal = goal.substring(i);
+
+                if(left_goal.equals(right_s) && right_goal.equals(left_s))  return true;
+
+            }
+        }
+        return false;
+    }
+}
