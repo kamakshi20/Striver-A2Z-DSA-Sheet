@@ -1,0 +1,17 @@
+class Solution {
+    public int removeDuplicates(int[] nums) {
+        
+        HashSet<Integer> set = new HashSet<>();
+
+        for(int i: nums){
+            set.add(i);
+        }
+        int k = 0;
+        for(int i: set){
+            nums[k++] = i;
+        }
+        Arrays.sort(nums, 0, k);
+        //sorting unique elements only
+        return k;
+    }
+}
