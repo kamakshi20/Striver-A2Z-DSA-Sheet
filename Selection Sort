@@ -1,0 +1,13 @@
+void selection_sort(int arr[], int n) {
+
+  for (int i = 0; i < n - 1; i++) {
+    int min_i = i;
+    for (int j = i + 1; j < n; j++) {
+      if (arr[j] < arr[min_ ]) {
+        min_i = j;
+      }
+    }
+    int temp = arr[min_i];
+    arr[min_i] = arr[i];
+    arr[i] = temp;
+}
