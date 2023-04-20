@@ -1,0 +1,20 @@
+class Solution {
+    int print2largest(int arr[], int n) {
+        // code here
+        
+        int largest = arr[0];
+        int sec_largest = -1;
+        
+        for(int i=1; i<n; i++){
+            if(largest < arr[i]){
+                sec_largest = largest;
+                largest = arr[i];
+            }
+            else
+            if(largest > arr[i] && sec_largest < arr[i]){
+                sec_largest = arr[i];
+            }
+        }
+        return sec_largest;
+    }
+}
