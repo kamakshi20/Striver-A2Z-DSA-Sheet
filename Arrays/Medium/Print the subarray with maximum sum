@@ -1,0 +1,34 @@
+// for printing the subarray
+
+class Solution {
+    public int maxSubArray(int[] nums) {
+        int sum=0;
+        int max=nums[0];
+        int n=nums.length;
+        int start = 0;
+        int ans_start = -1;
+        int ans_end = -1;
+        
+        if(n==1)
+            return max;
+        
+        for(int i=0;i<n;i++){
+        
+            if(sum == 0) 
+              start = i;
+              
+            sum+=nums[i];
+            
+            if(max < sum){
+              max = sum;
+              ans_start = start;
+              ans_end = i;
+            }
+            
+            if(sum<0)
+                sum=0;
+        }
+        
+        return max;
+    }
+}
