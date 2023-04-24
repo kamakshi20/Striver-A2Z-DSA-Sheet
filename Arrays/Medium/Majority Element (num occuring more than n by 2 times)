@@ -1,0 +1,69 @@
+Brute:  Counting the frequency and comapring it to be > n/2
+
+class Solution {
+    public int majorityElement(int[] nums) {
+
+        int n = nums.length;
+
+        for(int i=0; i<n; i++){
+            int count = 0;
+            for(int j=0; j<n; j++){
+                if(nums[i] == nums[j]){
+                    count ++;
+                }
+            }
+            if(count > (n / 2)) return nums[i];
+        }
+        return 0;
+    }
+}
+
+
+
+
+Better:  Hashing
+
+class Solution {
+    public int majorityElement(int[] nums) {
+        
+        HashMap<Integer, Integer> map = new HashMap<>();
+
+        for(int i: nums){
+            map.put(i, map.getOrDefault(i, 0) + 1);
+            if(map.get(i) > (nums.length / 2)){
+                return i;
+            }
+        }
+        return 0;
+    }
+}
+
+
+
+
+Optimised : Moore Voting Algo
+
+class Solution {
+    public int majorityElement(int[] nums) {
+        
+        int ans = -1;
+        int count = 0;
+
+        for(int i: nums){
+
+            if(count == 0){
+                ans = i;
+            }
+
+            if(ans != i){
+                count--;
+            }
+            else
+            if(ans == i){
+                count++;
+            }
+       }
+       return ans;
+    }
+}
+
