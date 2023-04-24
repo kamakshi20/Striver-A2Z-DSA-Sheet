@@ -1,0 +1,31 @@
+class Solution {
+    public int subarraySum(int[] nums, int target) {
+        
+        HashMap<Integer, Integer> map = new HashMap<>();
+        
+        int n = nums.length;
+        int sum = 0;
+        int mxLen = 0;
+        
+        for(int i=0; i<n; i++){
+            sum += nums[i]; // adding array elements one by one
+            
+            if(sum == target){
+                mxLen = Math.max(mxLen, i + 1);
+                // if at anytime the sum is equal to tha target we will find the maxlength
+            }          
+            
+            int rem = sum - target; //if at anytime teh sum > target we find whether sum - target exists in the map or not
+            if(map.containsKey(rem)){
+                mxLen = Math.max(mxLen, i - map.get(rem));
+            }
+        
+            if(!map.containsKey(sum)){
+                //storing the sum with the index
+                map.put(sum, i);
+            }
+        }
+        
+        return mxLen;
+    }
+}
