@@ -1,0 +1,55 @@
+class Solution {
+    public int findMaxConsecutiveOnes(int[] nums) {
+        
+        int curCount = 0;
+        int maxCount = 0;
+
+        for (int n : nums) {
+            if (n == 1) {
+                curCount++;
+                maxCount = Math.max(maxCount, curCount);
+            } 
+            else{
+                curCount = 0;
+            }
+        }
+
+        return maxCount;
+        
+    }
+}
+
+
+
+
+/// GFG 
+
+class Solve {
+    // m is maximum of number zeroes allowed to flip
+    int findZeroes(int arr[], int n, int m) {
+        // code here
+        
+        int j = -1;
+        int ans = 0;
+        int count = 0;
+        
+        for(int i=0;i<n;i++){
+
+            if(arr[i]==0)
+            count++;
+            
+            while(count>m){
+                
+                j++;
+                
+                if(arr[j] == 0)   count--;
+            }
+            int len = i - j;
+            
+            if(len > ans)  ans = len;
+            
+        }
+        return ans;
+        
+    }
+}
