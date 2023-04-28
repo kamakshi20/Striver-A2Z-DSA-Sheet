@@ -67,3 +67,52 @@ class Solution {
 
 
 Optimal:
+
+class Solution {
+    public void setZeroes(int[][] matrix) {
+
+        int m = matrix.length;
+        int n = matrix[0].length;
+        int col0 = matrix[0][0]; // X block
+
+        for(int i=0; i<m; i++){
+            for(int j=0; j<n; j++){
+
+                //mark the x block as 0 incase you encounter a 0 in the 0th col
+                if(j == 0 && matrix[i][j] == 0){
+                    col0 = 0;
+                }
+                else{
+                    if(matrix[i][j] == 0){
+                        //mark 0 in the 0th col and 0th row
+                        matrix[i][0] = 0;
+                        matrix[0][j] = 0;
+                    }
+                }
+            }
+        }
+
+        //traversing the block except of 0th row and 0th col
+        for(int i=1; i<m; i++){
+            for(int j=1; j<n; j++){
+                if(matrix[i][0] == 0 || matrix[0][j] == 0){
+                    matrix[i][j] = 0;
+                }
+            }
+        }
+        
+        //traversing the 0th row 
+        for(int j=1; j<n; j++){
+            if(matrix[0][0] == 0){
+                matrix[0][j] = 0;
+            }
+        }
+
+        //traversing the 0th col
+        for(int i=0; i<m; i++){
+            if(col0 == 0){
+                matrix[i][0] = 0;
+            }
+        }
+    }
+}
